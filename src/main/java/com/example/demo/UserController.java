@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import java.net.URI;
+import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,11 @@ public class UserController {
 
 	@GetMapping(path = "findUser/{id}")
 	public User findUser(@PathVariable String id) {
-		return userDaoService.get(id);
+		User user=userDaoService.get(id);
+		if(user==null){
+			throw new UserNotFoundException(id);
+		}
+		return user;
 	}
 	
 	@PostMapping(path="/updateUser")
