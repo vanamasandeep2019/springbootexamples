@@ -1,9 +1,11 @@
 package com.example.demo;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @Component
 public class UserDaoService {
@@ -22,6 +24,7 @@ public class UserDaoService {
 
 	public User save(User user) {
 		users.add(user);
+		
 		return user;
 	}
 
